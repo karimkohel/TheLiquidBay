@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+{% block content %}
+<form method="POST">
+	{% csrf_token %}
+	<legend>Log in</legend>
+	{{  form.as_p }}
+	<button class="btn waves-effect blue-grey darken-3" type="submit">Sign In</button>
+</form>
+<small>
+	Need an account? <a href="{% url 'user:register' %}">Sign Up now</a> 
+</small>
+{% endblock content %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include "main/includes/header.html" %}
+</head>
+
+<body class="grey lighten-2">
+	{% include "main/includes/nav.html" %}
+	<div class="container">
+
+		{% if store %}
+
+		{%  else %}
+
+		<div class="col s12 m8 offset-m2 l6 offset-l3">
+  			<div class="card-panel grey lighten-5 z-depth-1 hoverable">
+    			<div class="row">
+
+    	{% endif %}
+
+					{% block content %}
+						<h2>Are you lost ?</h2>
+						<h3>head home <a href="{% url 'home-page' %}"></a></h3>
+					{% endblock content %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+    <script>
+	    $(document).ready(function(){
+	    $('.sidenav').sidenav();
+		});
+    </script>
+
+</body>
+
+{% include "main/includes/footer.html" %}
+
+</html>

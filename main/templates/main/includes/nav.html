@@ -1,0 +1,75 @@
+{% if user.is_authenticated %}
+
+  <nav>
+    <div class="nav-wrapper blue-grey darken-3">
+      <div class="container">
+        <a href="{% url 'main:home' %}" class="brand-logo">TheLiquidBay</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'store:store_front' %}">Store</a></li>
+          <li><a href="{% url 'user:profile' %}">Profile</a></li>
+          <li><a href="{% url 'user:logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>                 
+  </nav>
+
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success'%}
+        <script>M.toast({html: "{{message}}", classes: 'light-green darken-4', displayLength:4000});</script>
+      {% elif message.tags == 'info'%}
+        <script>M.toast({html: "{{message}}", classes: 'light-blue darken-4', displayLength:4000});</script>
+      {% elif message.tags == 'warning'%}
+          <script>M.toast({html: "{{message}}", classes: 'amber darken-4', displayLength:10000});</script>
+      {% elif message.tags == 'error'%}
+          <script>M.toast({html: "{{message}}", classes: 'red darken-4', displayLength:10000});</script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'store:store_front' %}">Store</a></li>
+    <li><a href="{% url 'user:profile' %}">Profile</a></li>
+    <li><a href="{% url 'user:logout' %}">Logout</a></li>
+  </ul>
+
+{% else %}
+
+  <nav>
+    <div class="nav-wrapper blue-grey darken-3">
+      <div class="container">
+        <a href="{% url 'main:home' %}" class="brand-logo">TheLiquidBay</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'store:store_front' %}">Store</a></li>
+          <li><a href="{% url 'user:register' %}">register</a></li>
+          <li><a href="{% url 'user:login' %}">Login</a></li>
+        </ul>
+      </div>
+    </div>                 
+  </nav>
+  
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success'%}
+        <script>M.toast({html: "{{message}}", classes: 'light-green darken-4', displayLength:4000});</script>
+      {% elif message.tags == 'info'%}
+        <script>M.toast({html: "{{message}}", classes: 'light-blue darken-4', displayLength:4000});</script>
+      {% elif message.tags == 'warning'%}
+          <script>M.toast({html: "{{message}}", classes: 'amber darken-4', displayLength:10000});</script>
+      {% elif message.tags == 'error'%}
+          <script>M.toast({html: "{{message}}", classes: 'red darken-4', displayLength:10000});</script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'store:store_front' %}">Store</a></li>
+    <li><a href="{% url 'user:register' %}">register</a></li>
+    <li><a href="{% url 'user:login' %}">Login</a></li>
+  </ul>
+
+{% endif %}
